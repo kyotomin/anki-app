@@ -47,7 +47,6 @@ func (d *Deck) learnDeck() {
 
 	total := len(d.Cards)
 	correct := 0
-	incorrect := 0
 
 	shuffledCards := make([]Card, len(d.Cards))
 	copy(shuffledCards, d.Cards)
