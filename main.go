@@ -47,6 +47,8 @@ func (d *Deck) learnDeck() {
 
 	total := len(d.Cards)
 	correct := 0
+	incorrect := []Card{}
+	startTime := time.Now()
 
 	shuffledCards := make([]Card, len(d.Cards))
 	copy(shuffledCards, d.Cards)
@@ -55,7 +57,7 @@ func (d *Deck) learnDeck() {
 	})
 
 	fmt.Printf("Учим колоду %s (%d карточек)", d.Name, d.TotalCards)
-	fmt.Print("Введите enter для начала")
+	fmt.Print("Введите enter для начала, q для выхода")
 	fmt.Scan()
 
 	for i, card := range shuffledCards {
@@ -68,12 +70,29 @@ func (d *Deck) learnDeck() {
 		if answer == card.Transalation {
 			correct++
 			fmt.Printf("Верно! %s = %s", card.Word, card.Transalation)
+		} else if answer == "q" {
+			break
 		} else {
 			fmt.Printf("Неправильно! Правильный ответ: %s. Ваш Ответ: %s", card.Transalation, answer)
+			incorrect = append(incorrect, card)
+		}
+
+		if len(incorrect) > 0 {
+			fmt.Println("--- Повторяем ошибки ---")
+			for _, card := range incorrect {
+				fmt.Printf("Слово: %s, введите перевод:", card.Word)
+				scanner.Scan()
+				if scanner.Text() == card.Transalation {
+					fmt.Printf("Верно! %s = %s", card.Word, card.Transalation)
+					correct++
+				}
+			}
 		}
 
 	}
-	fmt.Printf("\n🏁 Результат: %d/%d (%.0f%%)\n", correct, total, float64(correct)/float64(total)*100)
+
+	duration := time.Since(startTime).Round(time.Second)
+	fmt.Printf("\n🏁 Результат: %d/%d (%.0f%%) Длительность: %v\n, ", correct, total, float64(correct)/float64(total)*100, duration)
 }
 
 func main() {
