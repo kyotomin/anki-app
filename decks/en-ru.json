@@ -1,0 +1,42 @@
+[
+  {
+    "Word": "hello",
+    "Translation": "привет"
+  },
+  {
+    "Word": "world",
+    "Translation": "мир"
+  },
+  {
+    "Word": "book",
+    "Translation": "книга"
+  },
+  {
+    "Word": "water",
+    "Translation": "вода"
+  },
+  {
+    "Word": "house",
+    "Translation": "дом"
+  },
+  {
+    "Word": "friend",
+    "Translation": "друг"
+  },
+  {
+    "Word": "time",
+    "Translation": "время"
+  },
+  {
+    "Word": "love",
+    "Translation": "любовь"
+  },
+  {
+    "Word": "music",
+    "Translation": "музыка"
+  },
+  {
+    "Word": "school",
+    "Translation": "школа"
+  }
+]
